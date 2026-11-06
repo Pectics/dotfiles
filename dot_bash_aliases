@@ -1,0 +1,7 @@
+alias cm="chezmoi"
+
+alias ts="tailscale"
+
+alias l="ls"
+alias ll="ls -la"
+
