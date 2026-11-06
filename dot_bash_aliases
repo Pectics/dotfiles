@@ -1,5 +1,5 @@
 # For not only chezmoi
-export PATH="/home/pectics/.local/bin:$PATH"
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
 alias cm="chezmoi"
 
 alias ts="tailscale"
