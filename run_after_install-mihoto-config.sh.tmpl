@@ -1,11 +1,14 @@
 #!/bin/sh
 set -eu
 
-if [ ! -f "$HOME/.config/mihoto.toml" ]; then
+src="$HOME/.config/mihoto.toml"
+dst="/etc/mihoto.toml"
+
+[ -f "$src" ] || exit 0
+
+if sudo test -f "$dst" && sudo cmp -s "$src" "$dst"; then
     exit 0
 fi
 
-sudo install -m 600 \
-    "$HOME/.config/mihoto.toml" \
-    /etc/mihoto.toml
+sudo install -m 600 "$src" "$dst"
 
