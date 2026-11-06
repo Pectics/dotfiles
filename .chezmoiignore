@@ -1,0 +1,8 @@
+{{- if not .features.codex }}
+.codex/**
+{{- end }}
+
+{{- if not .features.mihoto }}
+.config/mihoto.toml
+{{- end }}
+
