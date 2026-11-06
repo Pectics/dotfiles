@@ -1,4 +1,5 @@
-export PATH="/home/pectics/.local/bin:$PATH" # For not only chezmoi
+# For not only chezmoi
+export PATH="/home/pectics/.local/bin:$PATH"
 alias cm="chezmoi"
 
 alias ts="tailscale"
