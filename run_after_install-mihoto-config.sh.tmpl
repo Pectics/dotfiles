@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+if [ ! -f "$HOME/.config/mihoto.toml" ]; then
+    exit 0
+fi
+
+sudo install -m 600 \
+    "$HOME/.config/mihoto.toml" \
+    /etc/mihoto.toml
+
