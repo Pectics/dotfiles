@@ -1,0 +1,8 @@
+#!/bin/sh
+# config-hash: {{ include "dot_config/mihoto.toml" | sha256sum }}
+set -eu
+
+sudo install -m 600 \
+  "$HOME/.config/mihoto.toml" \
+  /etc/mihoto.toml
+
