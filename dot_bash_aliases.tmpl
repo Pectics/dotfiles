@@ -6,11 +6,22 @@ alias cm="chezmoi"
 {{- if eq .chezmoi.os "linux" }}
   {{- if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 alias tailscale="tailscale.exe"
-alias ts="tailscale.exe"
+_TS_BIN="tailscale.exe"
   {{- else }}
-alias ts="tailscale"
+_TS_BIN="tailscale"
   {{- end }}
 {{- end }}
+
+ts() {
+    if [ "$1" = "ping-all" ]; then
+        "$_TS_BIN" status | awk 'NR>1 && NF>=2 {print $2}' | xargs -I {} -P 0 sh -c '
+            out=$($1 ping --timeout=60s "$2" 2>&1)
+            printf "=== %s ===\n%s\n\n" "$2" "$out"
+        ' _ "$_TS_BIN" {}
+    else
+        "$_TS_BIN" "$@"
+    fi
+}
 
 alias l="ls"
 alias ll="ls -la"
