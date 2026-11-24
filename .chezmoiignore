@@ -5,6 +5,6 @@ README.md
 {{- end }}
 
 {{- if not .features.mihoto }}
-.config/mihoto.toml
+.config/.etc/mihoto.toml
 {{- end }}
 

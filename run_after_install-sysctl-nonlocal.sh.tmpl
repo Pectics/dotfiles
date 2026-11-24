@@ -10,6 +10,8 @@ if sudo test -f "$dst" && sudo cmp -s "$src" "$dst"; then
     exit 0
 fi
 
-sudo install -m 600 "$src" "$dst"
+sudo install -m 644 "$src" "$dst"
 rm "$src"
+
+sudo sysctl --system > /dev/null 2>&1
 
