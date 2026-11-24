@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+src="$HOME/.config/.etc/sysctl.d/99-nonlocal.conf"
+dst="/etc/sysctl.d/99-nonlocal.conf"
+
+[ -f "$src" ] || exit 0
+
+if sudo test -f "$dst" && sudo cmp -s "$src" "$dst"; then
+    exit 0
+fi
+
+sudo install -m 600 "$src" "$dst"
+rm "$src"
+
